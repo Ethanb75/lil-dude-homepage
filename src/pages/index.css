@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400|Dhurjati|Oswald:300|Permanent+Marker');
+
+* {
+  /* font-family: 'Barlow Condensed', sans-serif; */
+  font-family: 'Dhurjati', sans-serif;
+}
+html {
+  overflow: hidden;
+}
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.background::after {
+  position: absolute;
+  content: '';
+  display: block;
+  background-color: rgb(25, 25, 25);
+  width: 100vw;
+  height: 100%;
+  opacity: .8;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+#video {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  z-index: 1;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.content {
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content > span {
+  position: absolute;
+  right: 0;
+  transform: rotate(-90deg);
+}
+.content > span a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.content h1 {
+  font-size: 18em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 2.5rem;
+  line-height: 1;
+}
+.content h1 > span {
+  /* font-family: 'Teko', sans-serif; */
+  font-family: 'Permanent Marker', cursive;
+}
+.links {
+  display: flex;
+}
+.links > span {
+  text-transform: uppercase;
+  letter-spacing: .5em;
+  margin-right: 1em;
+  padding-right: .9em;
+  border-right: 3px solid white;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+.links > span:hover {
+}
+.links a {
+  text-decoration: none;
+  color: white;
+}
+.links img {
+  width: 2rem;
+  margin-right: .5rem;
+}
+.links > span:last-of-type {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.videoInfo {
+  position: absolute;
+  left: 3.5rem;
+  bottom: 1.5rem;
+  color: rgba(255, 255, 255, .35)
+}
+.social {
+  position: absolute;
+  right: 3.5rem;
+  bottom: 1.5rem;
+  display: flex;
+}
+
+.social > span {
+  font-family: 'Permanent Marker', cursive;
+  margin-left: 5rem;
+  font-size: 1.75rem;
+  color: rgba(255, 255, 255, .8);
+}
+
+@media screen and (max-width: 1300px) {
+  .content h1 {
+    font-size: 11em;
+  }
+  .links > span {
+    font-size: 1.05em;
+  }
+  .social > span {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .content h1 {
+    font-size: 9em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .content h1 {
+    font-size: 7em;
+  }
+  .videoInfo {
+    display: none;
+  }
+  .social {
+    right: initial;
+  }
+  .social > span {
+    margin: 0rem 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1.logo {
+    margin: 0px;
+    padding: 1rem 1.5rem;
+  }
+  .content {
+    text-align: left;
+    justify-content: left;
+  }
+  .content > div:first-of-type {
+    padding-left: 1.5rem;
+  }
+  .content h1 {
+    font-size: 8em;
+  }
+  .content h1 > span {
+    display: block;
+  }
+  .links {
+    flex-direction: column;
+  }
+  .links > span, .links > span:last-of-type {
+    margin-right: 0;
+    padding-right: 0;
+    border: none;
+    font-size: 3em;
+    padding: .8rem 0rem;
+  }
+  .social {
+    left: 0;
+    width: 100%;
+  }
+  .social > span {
+    flex-grow: 1;
+    margin: 0;
+    text-align: center;
+  }
+  .navButton {
+    right: 1.5rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .content h1 {
+    font-size: 5.5em;
+  }
+  .links > span, .links > span:last-of-type {
+    font-size: 2em;
+    padding: .5rem 0rem;
+  }
+}
