@@ -170,6 +170,9 @@ html {
   .content h1 > span {
     display: block;
   }
+  .content > span {
+    right: -1em;
+  }
   .links {
     flex-direction: column;
   }
@@ -200,5 +203,8 @@ html {
   .links > span, .links > span:last-of-type {
     font-size: 2em;
     padding: .5rem 0rem;
+  }
+  .social > span {
+    font-size: 1rem;
   }
 }
