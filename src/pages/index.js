@@ -18,7 +18,7 @@ export default class IndexPage extends Component {
             muted
             loop
             preload="auto"
-            autoPlay
+            // autoPlay
             playsInline
           >
             <source src={homicide} type="video/mp4" />

@@ -42,11 +42,11 @@ export default class Nav extends Component {
     if (overlay.isAnimating)
       return false;
     /* Set video to pause while menu up */
-    if (vid.paused && navShowing) {
-      vid.play();
-    } else {
-      vid.pause();
-    }
+    // if (vid.paused && navShowing) {
+    //   vid.play();
+    // } else {
+    //   vid.pause();
+    // }
 
     this.moveUp(navMenu).then(() => {
       overlay.toggle();
@@ -54,9 +54,14 @@ export default class Nav extends Component {
     });
   }
   componentDidMount() {
-    const overlay = new ShapeOverlays(document.querySelector('.shape-overlays'));
+    const svg = document.querySelector('.shape-overlays');
+    const overlay = new ShapeOverlays(svg);
     if (!this.state.menuOverlay)
       this.setState({ menuOverlay: overlay });
+
+    // svg.addEventListener('animationend', function() {
+
+    // })
   }
   render() {
     const { navShowing, menuOverlay } = this.state;
