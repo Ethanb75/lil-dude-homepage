@@ -7,6 +7,7 @@ nav {
 }
 .navBar {
   z-index: 1000;
+  position: relative;
 }
 h1.logo {
   margin: 0px;
@@ -97,8 +98,4 @@ h1.logo {
 .navMenu a:hover {
   letter-spacing: 1.5rem;
   font-size: 4.8rem;
-}
-nav > div:nth-of-type(2) {
-  z-index: 1000;
-  position: relative;
 }

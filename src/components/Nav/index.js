@@ -64,10 +64,10 @@ export default class Nav extends Component {
     return (
       <nav>
         <div className="navMenu">
-          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)', zIndex: '1000' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">HOME</Link></div>
-          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)', zIndex: '1000' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">LISTEN</Link></div>
-          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)', zIndex: '1000' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">MERCH</Link></div>
-          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)', zIndex: '1000' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">CONTACT</Link></div>
+          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">HOME</Link></div>
+          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">LISTEN</Link></div>
+          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">MERCH</Link></div>
+          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">CONTACT</Link></div>
         </div>
         <div className="navBar">
           <h1 className="logo">
