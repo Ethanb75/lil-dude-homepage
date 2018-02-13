@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'gatsby-link';
 
 import dude from '../../assets/lil-dude.png';
-import ShapeOverlays from '../../assets/shapes2';
+import ShapeOverlays from '../../assets/shapes3';
 import '../../assets/Nav.css';
 
 const buttonStyle = {
@@ -60,9 +60,6 @@ export default class Nav extends Component {
     if (!this.state.menuOverlay)
       this.setState({ menuOverlay: overlay });
 
-    // svg.addEventListener('animationend', function() {
-
-    // })
 
   }
   render() {

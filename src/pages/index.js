@@ -9,6 +9,12 @@ import dude from '../assets/lil-dude.png'
 
 
 export default class IndexPage extends Component {
+  componentDidMount() {
+    const vid = document.getElementById('video');
+    vid.addEventListener('load', () => {
+      return vid.play();
+    })
+  }
   render() {
     return (
       <div>
@@ -18,7 +24,7 @@ export default class IndexPage extends Component {
             muted
             loop
             preload="auto"
-            // autoPlay
+            autoPlay
             playsInline
           >
             <source src={homicide} type="video/mp4" />
