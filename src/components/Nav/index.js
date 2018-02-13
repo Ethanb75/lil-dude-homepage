@@ -42,18 +42,17 @@ export default class Nav extends Component {
     if (overlay.isAnimating)
       return false;
     /* Set video to pause while menu up */
-    // if (vid.paused && navShowing) {
-    //   vid.play();
-    // } else {
-    //   vid.pause();
-    // }
+    if (vid.paused && navShowing) {
+      vid.play();
+    } else {
+      vid.pause();
+    }
 
     // issue might be setting the state after click handler, resulting in multiple renderings?
-    overlay.toggle();
-    // this.moveUp(navMenu).then(() => {
-    //   overlay.toggle();
-    //   this.setState({ navShowing: !navShowing });
-    // });
+    this.moveUp(navMenu).then(() => {
+      overlay.toggle();
+      this.setState({ navShowing: !navShowing });
+    });
   }
   componentDidMount() {
     const svg = document.querySelector('.shape-overlays');
