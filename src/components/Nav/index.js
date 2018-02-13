@@ -48,10 +48,11 @@ export default class Nav extends Component {
     //   vid.pause();
     // }
 
-    this.moveUp(navMenu).then(() => {
-      overlay.toggle();
-      this.setState({ navShowing: !navShowing });
-    });
+    overlay.toggle();
+    // this.moveUp(navMenu).then(() => {
+    //   overlay.toggle();
+    //   this.setState({ navShowing: !navShowing });
+    // });
   }
   componentDidMount() {
     const svg = document.querySelector('.shape-overlays');
@@ -62,6 +63,7 @@ export default class Nav extends Component {
     // svg.addEventListener('animationend', function() {
 
     // })
+
   }
   render() {
     const { navShowing, menuOverlay } = this.state;
