@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import Link from 'gatsby-link'
+import React, { Component } from 'react';
+import Link from 'gatsby-link';
 
-import dude from '../../assets/lil-dude.png'
-import ShapeOverlays from '../../assets/shape-overlay';
-import '../../assets/Nav.css'
+import dude from '../../assets/lil-dude.png';
+import ShapeOverlays from '../../assets/shapes2';
+import '../../assets/Nav.css';
 
 const buttonStyle = {
   width: '100%',
@@ -12,7 +12,7 @@ const buttonStyle = {
   position: 'absolute',
   transformOrigin: '0% 0%',
   transition: 'all .3s ease-out'
-}
+};
 
 
 
@@ -48,6 +48,7 @@ export default class Nav extends Component {
     //   vid.pause();
     // }
 
+    // issue might be setting the state after click handler, resulting in multiple renderings?
     overlay.toggle();
     // this.moveUp(navMenu).then(() => {
     //   overlay.toggle();
