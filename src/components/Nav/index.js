@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Link from 'gatsby-link'
 
 import dude from '../../assets/lil-dude.png'
+import ShapeOverlays from '../../assets/shape-overlay';
 import '../../assets/Nav.css'
 
 const buttonStyle = {
@@ -17,17 +18,34 @@ const buttonStyle = {
 
 export default class Nav extends Component {
   state = {
-    navShowing: false
+    navShowing: false,
+    menuOverlay: undefined
   }
-  scrollToArea(ev, element) {
-    ev.preventDefault();
-    element.scrollIntoView({ behavior: 'smooth' });
-    document.getElementsByTagName('html')[0].style.overflow = '';
-    this.setState({ navShowing: false });
+  moveUp(elem) {
+    return new Promise(resolve => {
+      if (elem.style.zIndex === '') {
+        elem.style.zIndex = '100';
+        resolve(true);
+      } else {
+        setTimeout(() => {
+          elem.style.zIndex = ''
+        }, 400);
+        resolve(true);
+      }
+    })
   }
-  toggleNav(navShowing) {
+  toggleNav(navShowing, overlay) {
     let vid = document.getElementById('video');
-    this.setState({ navShowing: !navShowing });
+    let navMenu = document.querySelector('.navMenu');
+    if (!overlay)
+      return false;
+    if (overlay.isAnimating)
+      return false;
+
+    this.moveUp(navMenu).then(() => {
+      overlay.toggle();
+      this.setState({ navShowing: !navShowing });
+    });
 
     /* Set video to pause while menu up */
     if (vid.paused) {
@@ -35,44 +53,23 @@ export default class Nav extends Component {
     } else {
       vid.pause();
     }
-
-    if (document.getElementsByTagName('html')[0].style.overflow)
-      document.getElementsByTagName('html')[0].style.overflow = '';
-    else
-      document.getElementsByTagName('html')[0].style.overflow = 'hidden';
   }
   componentDidMount() {
-    // let scrolling = document.getElementsByTagName('video')[0].getBoundingClientRect();
-    // let navClassList = document.getElementsByTagName('nav')[0].classList;
-    // let throttle;
-
-    // document.addEventListener('scroll', function (ev) {
-    //   if (throttle) return;
-    //   // code below
-    //   if (scrollY >= scrolling.top) {
-    //     navClassList.add('navDown');
-    //     navClassList.remove('navUp');
-    //   } else {
-    //     navClassList.remove('navDown');
-    //     navClassList.add('navUp');
-    //   }
-    //   // rest of throttle
-    //   throttle = setTimeout(function () {
-    //     throttle = undefined;
-    //   }, 300);
-    // });
+    const overlay = new ShapeOverlays(document.querySelector('.shape-overlays'));
+    if (!this.state.menuOverlay)
+      this.setState({ menuOverlay: overlay });
   }
   render() {
-    const { navShowing } = this.state;
+    const { navShowing, menuOverlay } = this.state;
     return (
-      <nav style={navShowing ? { zIndex: '1000' } : {}}>
-        <div className="navMenu" style={navShowing ? { opacity: '1', transform: 'translateX(0%)' } : { opacity: '0', transform: 'translateX(100%)' }}>
-          <div><Link to="/">HOME</Link></div>
-          <div><Link to="/">LISTEN</Link></div>
-          <div><Link to="/">MERCH</Link></div>
-          <div><Link to="/">CONTACT</Link></div>
+      <nav>
+        <div className="navMenu">
+          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)', zIndex: '1000' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">HOME</Link></div>
+          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)', zIndex: '1000' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">LISTEN</Link></div>
+          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)', zIndex: '1000' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">MERCH</Link></div>
+          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)', zIndex: '1000' } : { opacity: '0', transform: 'translateY(100%)' }}><Link to="/">CONTACT</Link></div>
         </div>
-        <div>
+        <div className="navBar">
           <h1 className="logo">
             <Link
               to="/"
@@ -84,12 +81,23 @@ export default class Nav extends Component {
               <img style={{ width: '2.5rem', margin: 0 }} src={dude} />
             </Link>
           </h1>
-          <span className="navButton" onClick={() => this.toggleNav(navShowing)}>
+          <span className="navButton" onClick={() => this.toggleNav(navShowing, menuOverlay)}>
             <span style={navShowing ? { ...buttonStyle, transform: 'translate(-3px, 1.45rem) rotate(-45deg)', backgroundColor: 'white' } : buttonStyle}></span>
             <span style={navShowing ? { ...buttonStyle, opacity: '0' } : { ...buttonStyle, top: '.6rem' }}></span>
             <span style={navShowing ? { ...buttonStyle, top: '1.2rem', transform: 'translate(2px, -1.4rem) rotate(45deg)', backgroundColor: 'white' } : { ...buttonStyle, top: '1.2rem' }}></span>
           </span>
         </div>
+
+        {/* declare overlay onLoad and add click listeners */}
+        <svg
+          className="shape-overlays"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <path className="shape-overlays__path"></path>
+          <path className="shape-overlays__path"></path>
+          <path className="shape-overlays__path"></path>
+        </svg>
       </nav>
     )
   }

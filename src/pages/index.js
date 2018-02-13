@@ -13,7 +13,13 @@ export default class IndexPage extends Component {
     return (
       <div>
         <div className="background">
-          <video id="video" muted loop autoPlay>
+          <video
+            id="video"
+            muted
+            loop
+            autoPlay
+            playsInline
+          >
             <source src={homicide} type="video/mp4" />
           </video>
         </div>

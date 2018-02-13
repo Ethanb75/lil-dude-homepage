@@ -5,16 +5,41 @@ nav {
   top: 0;
   left: 0;
 }
+.navBar {
+  z-index: 1000;
+}
 h1.logo {
   margin: 0px;
   padding: 1rem 3.5rem;
 }
-.navDown {
+
+
+/* Overlay css */
+.shape-overlays {
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
   position: fixed;
-  background-color: rgb(10,10,10);
-  z-index: 1000;
-  animation: slideIn .2s ease-out;
+  top: 0;
+  left: 0;
+  z-index: 90;
 }
+.shape-overlays.is-opened {
+	pointer-events: auto;
+}
+.shape-overlays__path:nth-of-type(1) {
+	fill: #413f46;
+}
+.shape-overlays__path:nth-of-type(2) {
+	fill: #e6e5ea;
+}
+.shape-overlays__path:nth-of-type(3) {
+  /* fill: #cccccc; */
+  fill: #888492;
+}
+/* End Overlay style */
+
+
 .navButton {
   display: inline;
   position: absolute;
@@ -41,15 +66,25 @@ h1.logo {
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: all .3s ease-in;
-  background: rgba(25,25,25,.95);
-  z-index: 100;
 }
 .navMenu > div {
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all .3s ease-in;
+  transition-delay: .1s;
+  z-index: 0;
+}
+.navMenu > div:nth-of-type(2) {
+  transition-delay: .15s;
+  
+}
+.navMenu > div:nth-of-type(3) {
+  transition-delay: .21s;
+}
+.navMenu > div:nth-of-type(4) {
+  transition-delay: .35s;
 }
 .navMenu a {
   color: white;
@@ -63,7 +98,6 @@ h1.logo {
   letter-spacing: 1.5rem;
   font-size: 4.8rem;
 }
-
 nav > div:nth-of-type(2) {
   z-index: 1000;
   position: relative;
