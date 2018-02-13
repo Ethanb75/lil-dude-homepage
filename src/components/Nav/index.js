@@ -41,18 +41,17 @@ export default class Nav extends Component {
       return false;
     if (overlay.isAnimating)
       return false;
+    /* Set video to pause while menu up */
+    if (vid.paused && navShowing) {
+      vid.play();
+    } else {
+      vid.pause();
+    }
 
     this.moveUp(navMenu).then(() => {
       overlay.toggle();
       this.setState({ navShowing: !navShowing });
     });
-
-    /* Set video to pause while menu up */
-    if (vid.paused) {
-      vid.play();
-    } else {
-      vid.pause();
-    }
   }
   componentDidMount() {
     const overlay = new ShapeOverlays(document.querySelector('.shape-overlays'));

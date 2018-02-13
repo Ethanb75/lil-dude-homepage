@@ -17,6 +17,7 @@ export default class IndexPage extends Component {
             id="video"
             muted
             loop
+            preload="auto"
             autoPlay
             playsInline
           >
