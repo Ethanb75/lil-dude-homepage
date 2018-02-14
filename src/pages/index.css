@@ -84,12 +84,25 @@ html {
   border-right: 3px solid white;
   font-size: 1.2em;
   cursor: pointer;
+  position: relative;
 }
-.links > span:hover {
+.links a::before {
+  content: '';
+  position: absolute;
+  top: calc(50% + 1px);
+  left: -.2em;
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  transition: all .2s ease-out;
+}
+.links a:hover::before, .links a:active::before, .links a:focus {
+  width: 100%;
 }
 .links a {
   text-decoration: none;
   color: white;
+  position: relative;
 }
 .links img {
   width: 2rem;

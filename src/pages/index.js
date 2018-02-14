@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import Link from 'gatsby-link'
+import React, { Component } from 'react';
+import Link from 'gatsby-link';
 
-import './index.css'
-import '../assets/fontawesome-all.min.js'
-import homicide from '../assets/homicide-boat2.mp4'
-import dude from '../assets/lil-dude.png'
+import './index.css';
+import '../assets/fontawesome-all.min.js';
+import homicide from '../assets/homicide-boat2.mp4';
+import dude from '../assets/lil-dude.png';
 
 
 
@@ -46,7 +46,7 @@ export default class IndexPage extends Component {
                 <Link to="/music">Contact</Link>
               </span>
               <span>
-                video
+                <a href="https://www.youtube.com/watch?v=Y4C74LL_PJQ">Video</a>
               </span>
             </div>
           </div>
