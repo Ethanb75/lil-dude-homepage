@@ -11,9 +11,11 @@ import dude from '../assets/lil-dude.png';
 export default class IndexPage extends Component {
   componentDidMount() {
     const vid = document.getElementById('video');
-    vid.addEventListener('load', () => {
-      return vid.play();
-    })
+    console.log('mounting')
+    // vid.addEventListener('load', () => {
+    //   console.log('listener');
+    //   return vid.play();
+    // })
   }
   render() {
     return (
@@ -40,21 +42,21 @@ export default class IndexPage extends Component {
                 <Link to="/music">Music</Link>
               </span>
               <span>
-                <Link to="/music">Merch</Link>
+                <Link to="/">Merch</Link>
               </span>
               <span>
-                <Link to="/music">Contact</Link>
+                <Link to="/contact">Contact</Link>
               </span>
               <span>
-                <a href="https://www.youtube.com/watch?v=Y4C74LL_PJQ">Video</a>
+                <a href="https://www.youtube.com/watch?v=Y4C74LL_PJQ" target="__blank">Video</a>
               </span>
             </div>
           </div>
           <span>
-            <a href="https://www.instagram.com/explore/tags/trapnanana/">#Trapnanana</a>
+            <a href="https://www.instagram.com/explore/tags/trapnanana/" target="__blank">#Trapnanana</a>
           </span>
           <div className="videoInfo">
-            Lil Dude & Goonew ft Lil Yachty - Homicide Boat
+            <a href="https://www.youtube.com/watch?v=Y4C74LL_PJQ" target="__blank">Lil Dude & Goonew ft Lil Yachty - Homicide Boat</a>
           </div>
           <div className="social">
             <span>

@@ -1,0 +1,22 @@
+.music {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(25,25,25);
+}
+.music__nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.music__nav > div:first-of-type {
+  display: flex;
+}
+.music__nav > div:first-of-type > span {
+  flex-grow: 1;
+  text-align: center;
+  padding: 1rem;
+}
