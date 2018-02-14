@@ -71,15 +71,17 @@ h1.logo {
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding-top: 2.5rem;
+  align-items: center;
 }
 .navMenu > div {
   flex-grow: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
   transition: all .3s ease-in;
   transition-delay: .1s;
   z-index: 0;
+  width: 38vw;
 }
 .navMenu > div:nth-of-type(2) {
   transition-delay: .15s;
@@ -144,5 +146,10 @@ h1.logo {
 @media screen and (max-width: 600px) {
   .navMenu a {
     font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .navMenu > div {
+    width: 62vw;
   }
 }
