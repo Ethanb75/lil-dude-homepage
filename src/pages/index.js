@@ -5,13 +5,13 @@ import './index.css';
 import '../assets/fontawesome-all.min.js';
 import homicide from '../assets/homicide-boat2.mp4';
 import dude from '../assets/lil-dude.png';
+import poster from '../assets/poster.png';
 
 
 
 export default class IndexPage extends Component {
   componentDidMount() {
-    const vid = document.getElementById('video');
-    console.log('mounting')
+    // const vid = document.getElementById('video')
     // vid.addEventListener('load', () => {
     //   console.log('listener');
     //   return vid.play();
@@ -23,6 +23,7 @@ export default class IndexPage extends Component {
         <div className="background">
           <video
             id="video"
+            poster={poster}
             muted
             loop
             preload="auto"

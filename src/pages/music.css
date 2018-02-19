@@ -4,13 +4,23 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(25,25,25);
+  background-color: #FCFCFC;
 }
 .music__nav {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  top: 0;
+  right: 0;
+  height: 100%;
+  min-width: 23.8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #181818;
+  color: white;
+}
+.music__nav img {
+  width: 20rem;
 }
 .music__nav > div:first-of-type {
   display: flex;
@@ -19,4 +29,54 @@
   flex-grow: 1;
   text-align: center;
   padding: 1rem;
+}
+.music__list {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.music__list img {
+  width: 8rem;
+  float: right;
+}
+.listWrap {
+  width: 100%;
+  padding: 14rem 23.8vw 0 23.8vw;
+}
+.listWrap__item {
+  width: 100%;
+  display: flex;
+  margin-bottom: 5rem;
+  padding-bottom: 5rem;
+  padding-right: 5rem;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+.listWrap__item > div:first-of-type {
+  width: 14.6%;
+  text-align: right;
+}
+.listWrap__item > div:last-of-type {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5rem;
+  flex-grow: 1;
+}
+.listWrap__item > div:last-of-type span {
+  font-size: 1rem;
+  padding: .4rem;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.listWrap__item > div:last-of-type span:nth-of-type(2n) {
+  background-color: rgb(245,245,245);
+}
+.listWrap__item > div:last-of-type span:hover, .listWrap__item > div:last-of-type span:active {
+  /* background-color: #8EB198; */
+  background-color: #3D3D3D;
+  color: whitesmoke;
 }

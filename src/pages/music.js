@@ -5,10 +5,28 @@ import ReactPlayer from 'react-player';
 import './music.css';
 import Duration from '../assets/Duration';
 
+import luc2 from '../assets/luc2.png';
+import mll from '../assets/mll.png';
+import trap from '../assets/trapnanana.png';
+
 const music = [
   {
-    albumName: '',
-    cover: '',
+    albumName: 'Martin Luther Luciano',
+    cover: mll,
+    songs: [
+      { name: '', ft: '', url: '' }
+    ]
+  },
+  {
+    albumName: 'Luciano 2.0',
+    cover: luc2,
+    songs: [
+      { name: '', ft: '', url: '' }
+    ]
+  },
+  {
+    albumName: 'Trapnanana',
+    cover: trap,
     songs: [
       { name: '', ft: '', url: '' }
     ]
@@ -92,9 +110,6 @@ export default class Music extends Component {
   ref = player => {
     this.player = player
   }
-  componentDidMount() {
-
-  }
   render() {
     const album = music[this.state.currentAlbum];
     const song = album.songs[this.state.currentSong];
@@ -127,19 +142,64 @@ export default class Music extends Component {
           onProgress={this.onProgress}
           onDuration={this.onDuration}
         />
-        <div className="music__nav">
-          <div>
-            <span>songs</span>
-            <span>albums</span>
-            <span>videos</span>
-          </div>
-          <div>
-            <span>
-              title ft. someone
-            </span>
+
+
+        <div className="music__list">
+          {/*Here, have function that renders the list view based on view state*/}
+          {/*for albumLength render a list item and click listeners *or* just */}
+          {/*Maybe every song <span> is a component with data about song*/}
+          <div className="listWrap">
+            {music.map(el => {
+              return (
+                <div className="listWrap__item">
+                  <div>
+                    <img src={el.cover} />
+                    <h5>{el.albumName}</h5>
+                  </div>
+                  <div>
+                    <span>Song name ft. person</span>
+                    <span>Song name ft. person and guy</span>
+                    <span>hank hill ft. guy</span>
+                    <span>Bill don't move m' track'r</span>
+                    <span>Rick Swanson</span>
+                    <span>Luciano</span>
+                    <span>Song name ft. person & bill & rick</span>
+                    <span>Song name ft. person</span>
+                    <span>Song name ft. person</span>
+                    <span>Song name 2 ft. person</span>
+                    <span>Song name ft. person</span>
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
 
+
+        <div className="music__nav">
+          <img src={album.cover} />
+          <div>
+            <h3>Title</h3>
+            <p>ft. someone</p>
+          </div>
+          <div>
+            {/* <span style={{ marginRight: '.5rem' }}>
+              <Duration seconds={duration * played} /> / <Duration seconds={duration} />
+            </span> */}
+            <input
+              type='range' min={0} max={1} step='any'
+              value={played}
+              onMouseDown={this.onSeekMouseDown}
+              onChange={this.onSeekChange}
+              onMouseUp={this.onSeekMouseUp}
+            />
+          </div>
+          <div>
+            <button>back</button>
+            <button>playpause</button>
+            <button>forward</button>
+          </div>
+        </div>
       </div>
     )
   }

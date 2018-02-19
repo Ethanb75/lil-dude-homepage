@@ -85,9 +85,9 @@ export default class Nav extends Component {
             </Link>
           </h1>
           <span className="navButton" onClick={() => this.toggleNav(navShowing, menuOverlay)}>
-            <span style={navShowing ? { ...buttonStyle, transform: 'translate(-3px, 1.45rem) rotate(-45deg)', backgroundColor: 'white' } : buttonStyle}></span>
-            <span style={navShowing ? { ...buttonStyle, opacity: '0' } : { ...buttonStyle, top: '.6rem' }}></span>
-            <span style={navShowing ? { ...buttonStyle, top: '1.2rem', transform: 'translate(2px, -1.4rem) rotate(45deg)', backgroundColor: 'white' } : { ...buttonStyle, top: '1.2rem' }}></span>
+            <span style={navShowing ? { transform: 'translate(-3px, 1.45rem) rotate(-45deg)', backgroundColor: 'white' } : {}}></span>
+            <span style={navShowing ? { opacity: '0' } : { top: '.6rem' }}></span>
+            <span style={navShowing ? { top: '1.2rem', transform: 'translate(2px, -1.4rem) rotate(45deg)', backgroundColor: 'white' } : { top: '1.2rem' }}></span>
           </span>
         </div>
 
