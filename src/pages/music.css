@@ -295,4 +295,7 @@
   .listWrap {
     padding: 7rem 5vw 0 5vw;
   }
+  .music__nav img {
+    width: 6rem;
+  }
 }

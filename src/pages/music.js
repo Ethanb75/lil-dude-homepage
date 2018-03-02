@@ -109,7 +109,8 @@ export default class Music extends Component {
           played: 0,
           loaded: 0,
           currentSong: songNum,
-          currentAlbum: albumNum
+          currentAlbum: albumNum,
+          loadingSong: false
         })
       }
     };
