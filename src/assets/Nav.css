@@ -13,6 +13,11 @@ h1.logo {
   margin: 0px;
   padding: 1rem 3.5rem;
 }
+h1.logo img {
+  width: 2.5rem;
+  opacity: .7;
+  margin: 0;
+}
 
 
 /* Overlay css */
@@ -155,6 +160,9 @@ h1.logo {
 @media screen and (max-width: 600px) {
   .navMenu a {
     font-size: 2.5rem;
+  }
+  h1.logo img {
+    width: 1.5rem;
   }
 }
 @media screen and (max-width: 425px) {

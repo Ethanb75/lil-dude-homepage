@@ -81,7 +81,7 @@ export default class Nav extends Component {
                 textDecoration: 'none'
               }}
             >
-              <img style={{ width: '2.5rem', margin: 0, opacity: '.7' }} src={dude} />
+              <img src={dude} />
             </Link>
           </h1>
           <span className="navButton" onClick={() => this.toggleNav(navShowing, menuOverlay)}>
