@@ -215,6 +215,9 @@ export default class Music extends Component {
   }
   componentDidMount() {
     document.getElementsByClassName('navBar')[0].classList.add('navBar--music');
+    if (this.state.loadingSong === true) {
+      this.setState({ loadingSong: false });
+    }
   }
   componentWillUnmount() {
     document.getElementsByClassName('navBar')[0].classList.remove('navBar--music');
@@ -241,7 +244,7 @@ export default class Music extends Component {
           onStart={() => console.log('onStart')}
           onPlay={this.onPlay}
           onPause={this.onPause}
-          onBuffer={() => console.log('onBuffer')}
+          onBuffer={() => this.setState({ loadingSong: false })}
           onSeek={e => console.log('onSeek', e)}
           onEnded={this.onEnded}
           onError={e => {
