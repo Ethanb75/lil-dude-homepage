@@ -171,7 +171,10 @@ html {
 @media screen and (max-width: 600px) {
   h1.logo {
     margin: 0px;
-    padding: 1rem 1.5rem;
+    padding: .5rem 1rem;
+  }
+  .listWrap__item {
+    flex-direction: column;
   }
   .content {
     text-align: left;
