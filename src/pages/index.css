@@ -132,7 +132,7 @@ html {
 .social > span {
   font-family: 'Permanent Marker', cursive;
   margin-left: 5rem;
-  font-size: 1.75rem;
+  font-size: 1.2rem;
   color: rgba(255, 255, 255, .8);
 }
 
@@ -211,19 +211,16 @@ html {
     margin: 0;
     text-align: center;
   }
-  .navButton {
-    right: 1.5rem;
-  }
 }
 @media screen and (max-width: 425px) {
   .content h1 {
     font-size: 5.5em;
   }
   .links > span, .links > span:last-of-type {
-    font-size: 1.4em;
+    font-size: 1.2em;
     padding: .5rem 0rem;
   }
   .social > span {
-    font-size: 1rem;
+    font-size: .8rem;
   }
 }

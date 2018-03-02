@@ -25,12 +25,13 @@
   margin: 1.5rem 0rem;
 }
 .music__nav img, .range {
-  width: 20rem;
+  width: 18rem;
 }
 .music__nav > div:first-of-type {
   display: flex;
   flex-direction: column;
   width: 20rem;
+  align-items: center;
 }
 .music__nav > div:first-of-type > span {
   flex-grow: 1;
