@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player';
 
 import './music.css';
 import '../assets/range.css';
+import '../assets/fontawesome-all.min.js';
 
 import luc2 from '../assets/luc2.png';
 import mll from '../assets/mll.png';
