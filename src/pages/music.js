@@ -226,7 +226,7 @@ export default class Music extends Component {
     const album = music[this.state.currentAlbum];
     const song = album.songs[this.state.currentSong];
     const { url, playing, volume, muted, loop, played, loaded, duration, playbackRate, currentView, loadingSong } = this.state;
-    const iOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform);
+
     return (
       <div className="music">
         <ReactPlayer
@@ -275,6 +275,7 @@ export default class Music extends Component {
                       //on click call load method with song number, url, and album num
                       return <span onClick={() => {
                         this.load(songNum, albumNum, true);
+                        let iOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform)
                         if (iOS) {
                           console.log('iOs device')
                         }
