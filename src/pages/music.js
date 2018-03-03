@@ -249,9 +249,6 @@ export default class Music extends Component {
           onEnded={this.onEnded}
           onError={e => {
             console.log('onError4', e);
-            if (this.state.playing === false) {
-              this.playPause();
-            }
           }}
           onProgress={this.onProgress}
           onDuration={this.onDuration}
@@ -259,7 +256,7 @@ export default class Music extends Component {
 
         <div className="music__list">
           <div className="view">
-            <span className={currentView === 'albums' ? 'currentView' : ''} onClick={() => this.setState({ currentView: 'albums' })}>ALBUMS</span>
+            <span className="albums">ALBUMS</span>
           </div>
           <div className="listWrap">
             {music.map((el, albumNum) => {
@@ -275,8 +272,8 @@ export default class Music extends Component {
                       return <span onClick={() => {
                         this.load(songNum, albumNum, true);
                         let iOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform)
-                        if (iOS) {
-                          this.playPause();
+                        if (iOS && this.state.playing === false) {
+                          document.getElementsByTagName('audio')[0].play();
                         }
                       }} key={song.name} style={this.state.currentAlbum === albumNum && this.state.currentSong === songNum ? { backgroundColor: "#3D3D3D", color: "whitesmoke" } : {}}>
                         {song.name}
