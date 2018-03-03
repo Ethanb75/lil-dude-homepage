@@ -226,7 +226,7 @@ export default class Music extends Component {
     const album = music[this.state.currentAlbum];
     const song = album.songs[this.state.currentSong];
     const { url, playing, volume, muted, loop, played, loaded, duration, playbackRate, currentView, loadingSong } = this.state;
-    const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    const iOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform);
     return (
       <div className="music">
         <ReactPlayer
