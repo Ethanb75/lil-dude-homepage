@@ -226,7 +226,7 @@ export default class Music extends Component {
     const album = music[this.state.currentAlbum];
     const song = album.songs[this.state.currentSong];
     const { url, playing, volume, muted, loop, played, loaded, duration, playbackRate, currentView, loadingSong } = this.state;
-
+    const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
     return (
       <div className="music">
         <ReactPlayer
@@ -249,11 +249,9 @@ export default class Music extends Component {
           onSeek={e => console.log('onSeek', e)}
           onEnded={this.onEnded}
           onError={e => {
-            console.log('onError', e);
-            try {
+            console.log('onError4', e);
+            if (this.state.playing === false) {
               this.playPause();
-            } catch {
-              console.log("playpause didn't work")
             }
           }}
           onProgress={this.onProgress}
@@ -275,7 +273,12 @@ export default class Music extends Component {
                   <div>
                     {el.songs.map((song, songNum) => {
                       //on click call load method with song number, url, and album num
-                      return <span onClick={() => this.load(songNum, albumNum, true)} key={song.name} style={this.state.currentAlbum === albumNum && this.state.currentSong === songNum ? { backgroundColor: "#3D3D3D", color: "whitesmoke" } : {}}>
+                      return <span onClick={() => {
+                        this.load(songNum, albumNum, true);
+                        if (iOS) {
+                          console.log('iOs device')
+                        }
+                      }} key={song.name} style={this.state.currentAlbum === albumNum && this.state.currentSong === songNum ? { backgroundColor: "#3D3D3D", color: "whitesmoke" } : {}}>
                         {song.name}
                         {song.ft ? <div style={this.state.currentAlbum === albumNum && this.state.currentSong === songNum ? { color: "rgba(255,255,255,.6)" } : {}}> ft: {song.ft}</div> : ""}
                       </span>
@@ -313,7 +316,6 @@ export default class Music extends Component {
               <button onClick={() => this.playPause()}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 16"><path className="playPause" d={playing === true ? "M.164.219H6V15.78H.164M8.918.22h5.836V15.78H8.918" : "M0 0l7 3.74v8.54L0 16M7 3.74L15 8l-8 4.28"} /></svg>
               </button>
-
               <button onClick={() => this.next()}><i className="fas fa-fast-forward"></i></button>
             </div>
           </div>
