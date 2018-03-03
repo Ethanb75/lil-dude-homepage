@@ -143,7 +143,6 @@ export default class Music extends Component {
     }
   }
   playPause = () => {
-    console.log(this.state.playing);
     this.setState({ playing: !this.state.playing });
   }
   stop = () => {
@@ -277,7 +276,7 @@ export default class Music extends Component {
                         this.load(songNum, albumNum, true);
                         let iOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform)
                         if (iOS) {
-                          console.log('iOs device')
+                          this.playPause();
                         }
                       }} key={song.name} style={this.state.currentAlbum === albumNum && this.state.currentSong === songNum ? { backgroundColor: "#3D3D3D", color: "whitesmoke" } : {}}>
                         {song.name}
