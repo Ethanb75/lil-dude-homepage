@@ -235,7 +235,7 @@ export default class Music extends Component {
           className='react-player'
           width='100%'
           height='100%'
-          autoPlay
+          autoPlay='true'
           playing={playing}
           loop={loop}
           playbackRate={playbackRate}
@@ -250,7 +250,11 @@ export default class Music extends Component {
           onEnded={this.onEnded}
           onError={e => {
             console.log('onError', e);
-            // alert('There seems to be an issue with the player and it might not work as intended');
+            try {
+              this.playPause();
+            } catch {
+              console.log("playpause didn't work")
+            }
           }}
           onProgress={this.onProgress}
           onDuration={this.onDuration}
