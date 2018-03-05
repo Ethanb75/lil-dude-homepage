@@ -56,7 +56,10 @@
 }
 .controls {
   display: flex;
-  justify-content: center;  
+  justify-content: center;
+  width: 18rem;
+  position: relative;
+  align-items: center;  
 }
 .controls button {
   cursor: pointer;
@@ -71,6 +74,25 @@
 }
 .controls button:nth-of-type(2) svg {
   width: 2rem;
+}
+input[type="range"].volumeSlider {
+  position: absolute;
+  width: 38%;
+  right: 1.1rem;
+  transform: rotate(-90deg);
+  transform-origin: right;
+  bottom: -1rem;
+  background: rgb(24,24,24);
+  padding: 1rem;
+  opacity: 0;
+  transition: all .3s ease;
+}
+input[type="range"].volumeSlider.showing {
+  opacity: 1;
+}
+.controls button.volumeBtn {
+  position: absolute;
+  right: 0;
 }
 .playPause {
   fill: #FCFCFC;
@@ -151,13 +173,13 @@
   background-color: rgb(245,245,245);
 }
 .listWrap__item > div:last-of-type span:hover, .listWrap__item > div:last-of-type span:active {
-  background-color: #3D3D3D;
+  background-color: rgba(61, 61, 61, .7);
   color: whitesmoke;
 }
 
 
 @media screen and (max-width: 1400px) {
-  .music__nav img, .range, .music__nav > div:first-of-type {
+  .music__nav img, .range, .music__nav > div:first-of-type, .controls {
     width: 15rem;
   }
   .view {
@@ -190,7 +212,7 @@
   .listWrap__item {
     padding-right: 2rem;
   }
-  .range {
+  .range, .controls {
     width: 100%;
   }
 }
@@ -227,6 +249,18 @@
     display: flex;
     flex-direction: row;
   }
+  .view {
+    display: initial;
+    transform: none;
+    font-size: 1rem;
+    top: 1.6rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .controls {
+    position: initial;
+  }
   .controls button {
     padding: .6rem;
   }
@@ -239,8 +273,17 @@
   .controls button:nth-of-type(2) svg {
     width: .9rem;
   }
+  input[type="range"].volumeSlider {
+    transform: rotate(0deg);
+    bottom: initial;
+    top: -2rem;
+    right: 0;
+  }
   .navBar--music {
-    background: rgb(24, 24, 24);
+    background: transparent;
+  }
+  .navBar--music .navButton > span {
+    background-color: rgb(24, 24, 24);
   }
   .songInfo {
     display: flex;
