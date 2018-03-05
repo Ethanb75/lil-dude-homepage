@@ -313,6 +313,7 @@ export default class Music extends Component {
                 onMouseDown={this.onSeekMouseDown}
                 onChange={this.onSeekChange}
                 onMouseUp={this.onSeekMouseUp}
+                onTouchMove={this.onSeekChange}
               />
             </div>
             <div className="controls">
