@@ -85,10 +85,12 @@ input[type="range"].volumeSlider {
   background: rgb(24,24,24);
   padding: 1rem;
   opacity: 0;
+  visibility: hidden;
   transition: all .3s ease;
 }
 input[type="range"].volumeSlider.showing {
   opacity: 1;
+  visibility: visible;
 }
 .controls button.volumeBtn {
   position: absolute;
@@ -294,6 +296,7 @@ input[type="range"].volumeSlider.showing {
   .songInfo p {
     margin-left: .2rem;
     margin-bottom: 0;
+    line-height: .5;
   }
   .music__nav img {
     width: 7rem;
@@ -301,7 +304,8 @@ input[type="range"].volumeSlider.showing {
   }
   .range {
     width: 100%;
-    margin: .3rem 0rem;
+    margin: 0;
+    margin-top: .5rem;
   }
   .listWrap {
     padding: 10rem 10vw 0 10vw;
