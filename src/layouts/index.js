@@ -33,7 +33,7 @@ import favicon128 from './icons/favicon-128.png';
 const meta = [
   { name: 'description', content: '#Trapnanana' },
   { name: 'keywords', content: 'lil dude, Trapnanana, luciano, homicide boat' },
-  { name: 'viewport', content="width=device-width, initial-scale=1.0" },
+  { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
   { name: 'application-name', content: 'Lil Dude Homepage' },
   { name: 'msapplication-TileColor', content: '#191919' },
   { name: 'msapplication-TileImage', content: mstile144 },
