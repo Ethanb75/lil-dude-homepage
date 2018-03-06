@@ -273,7 +273,7 @@ export default class Music extends Component {
                       return <span onClick={() => {
                         this.load(songNum, albumNum, true);
                         let iOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform)
-                        if (iOS && this.state.playing === false) {
+                        if (iOS) {
                           setTimeout(() => {
                             document.getElementsByTagName('audio')[0].play().then(() => {
                               console.log('it works????');
