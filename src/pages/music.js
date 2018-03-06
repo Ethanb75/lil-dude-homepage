@@ -83,10 +83,11 @@ export default class Music extends Component {
     playStyle: 'album',
     onBackShouldRestart: false,
     loadingSong: true,
-    volumeShowing: false
+    volumeShowing: false,
+    isIOS: !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform)
   }
   // on load, set url, played to 0, loaded to 0, and currentSong / Album
-  load = (songNum, albumNum, playAfter) => {
+  load = (songNum, albumNum, playAfter, iOS) => {
     let url = music[albumNum].songs[songNum].url;
 
     if (songNum === this.state.currentSong && albumNum === this.state.currentAlbum) {
@@ -95,15 +96,36 @@ export default class Music extends Component {
       this.setState({ loadingSong: true });
 
       if (playAfter === true) {
-        return this.setState({
-          url,
-          played: 0,
-          loaded: 0,
-          currentSong: songNum,
-          currentAlbum: albumNum,
-          playing: true,
-          playStyle: 'album'
-        })
+        if (iOS) {
+          return this.setState({
+            url,
+            played: 0,
+            loaded: 0,
+            currentSong: songNum,
+            currentAlbum: albumNum,
+            playing: true,
+            playStyle: 'album'
+          }, () => {
+            setTimeout(() => {
+              document.getElementsByTagName('audio')[0].play().then(() => {
+                console.log('it works????');
+              }).catch(err => {
+                console.log(err);
+              });
+            }, 500);
+          })
+        } else {
+          return this.setState({
+            url,
+            played: 0,
+            loaded: 0,
+            currentSong: songNum,
+            currentAlbum: albumNum,
+            playing: true,
+            playStyle: 'album'
+          })
+        }
+
       } else {
         return this.setState({
           url,
@@ -117,26 +139,26 @@ export default class Music extends Component {
     };
   }
   //return load based on current song and playStyle
-  next = () => {
+  next = (iOS) => {
     const { currentAlbum, currentSong } = this.state;
 
     if (this.state.playStyle = 'album') {
       if (currentSong == music[currentAlbum].songs.length - 1) {
-        return this.load(0, currentAlbum, true);
+        return this.load(0, currentAlbum, true, iOS);
       } else {
-        return this.load(currentSong + 1, currentAlbum, true);
+        return this.load(currentSong + 1, currentAlbum, true, iOS);
       }
     }
   }
-  back = () => {
+  back = (iOS) => {
     const { currentAlbum, currentSong, onBackShouldRestart } = this.state;
 
     if (onBackShouldRestart === false) {
       if (this.state.playStyle = 'album') {
         if (currentSong == 0) {
-          return this.load(music[currentAlbum].songs.length - 1, currentAlbum, true);
+          return this.load(music[currentAlbum].songs.length - 1, currentAlbum, true, iOS);
         } else {
-          return this.load(currentSong - 1, currentAlbum, true);
+          return this.load(currentSong - 1, currentAlbum, true, iOS);
         }
       }
     } else {
@@ -225,7 +247,7 @@ export default class Music extends Component {
   render() {
     const album = music[this.state.currentAlbum];
     const song = album.songs[this.state.currentSong];
-    const { url, playing, volume, muted, loop, played, loaded, duration, playbackRate, currentView, loadingSong, volumeShowing } = this.state;
+    const { url, playing, volume, muted, loop, played, loaded, duration, playbackRate, currentView, loadingSong, volumeShowing, isIOS } = this.state;
 
     return (
       <div className="music">
@@ -271,17 +293,17 @@ export default class Music extends Component {
                     {el.songs.map((song, songNum) => {
                       //on click call load method with song number, url, and album num
                       return <span onClick={() => {
-                        this.load(songNum, albumNum, true);
-                        let iOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform)
-                        if (iOS) {
-                          setTimeout(() => {
-                            document.getElementsByTagName('audio')[0].play().then(() => {
-                              console.log('it works????');
-                            }).catch(err => {
-                              console.log(err);
-                            });
-                          }, 1000);
-                        }
+                        this.load(songNum, albumNum, true, isIOS);
+                        // let iOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform)
+                        // if (iOS) {
+                        //   setTimeout(() => {
+                        //     document.getElementsByTagName('audio')[0].play().then(() => {
+                        //       console.log('it works????');
+                        //     }).catch(err => {
+                        //       console.log(err);
+                        //     });
+                        //   }, 1000);
+                        // }
                       }} key={song.name} style={this.state.currentAlbum === albumNum && this.state.currentSong === songNum ? { backgroundColor: "rgba(61, 61, 61, .7)", color: "whitesmoke" } : {}}>
                         {song.name}
                         {song.ft ? <div style={this.state.currentAlbum === albumNum && this.state.currentSong === songNum ? { color: "rgba(255,255,255,.6)" } : {}}> ft: {song.ft}</div> : ""}
@@ -318,11 +340,11 @@ export default class Music extends Component {
               />
             </div>
             <div className="controls">
-              <button onClick={() => this.back()}><i className="fas fa-fast-backward"></i></button>
+              <button onClick={() => this.back(isIOS)}><i className="fas fa-fast-backward"></i></button>
               <button onClick={() => this.playPause()}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 16"><path className="playPause" d={playing === true ? "M.164.219H6V15.78H.164M8.918.22h5.836V15.78H8.918" : "M0 0l7 3.74v8.54L0 16M7 3.74L15 8l-8 4.28"} /></svg>
               </button>
-              <button onClick={() => this.next()}><i className="fas fa-fast-forward"></i></button>
+              <button onClick={() => this.next(isIOS)}><i className="fas fa-fast-forward"></i></button>
               <button className="volumeBtn" onClick={() => this.setState({ volumeShowing: !volumeShowing })}>
                 <i className="fas fa-volume-up"></i>
               </button>
