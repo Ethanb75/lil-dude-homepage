@@ -141,9 +141,10 @@ export default class Music extends Component {
   //return load based on current song and playStyle
   next = (iOS) => {
     const { currentAlbum, currentSong } = this.state;
-
+    console.log('next: ', iOS);
     if (this.state.playStyle = 'album') {
       if (currentSong == music[currentAlbum].songs.length - 1) {
+        console.log('calling load....');
         return this.load(0, currentAlbum, true, iOS);
       } else {
         return this.load(currentSong + 1, currentAlbum, true, iOS);
@@ -294,16 +295,7 @@ export default class Music extends Component {
                       //on click call load method with song number, url, and album num
                       return <span onClick={() => {
                         this.load(songNum, albumNum, true, isIOS);
-                        // let iOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform)
-                        // if (iOS) {
-                        //   setTimeout(() => {
-                        //     document.getElementsByTagName('audio')[0].play().then(() => {
-                        //       console.log('it works????');
-                        //     }).catch(err => {
-                        //       console.log(err);
-                        //     });
-                        //   }, 1000);
-                        // }
+
                       }} key={song.name} style={this.state.currentAlbum === albumNum && this.state.currentSong === songNum ? { backgroundColor: "rgba(61, 61, 61, .7)", color: "whitesmoke" } : {}}>
                         {song.name}
                         {song.ft ? <div style={this.state.currentAlbum === albumNum && this.state.currentSong === songNum ? { color: "rgba(255,255,255,.6)" } : {}}> ft: {song.ft}</div> : ""}
