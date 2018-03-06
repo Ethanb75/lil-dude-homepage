@@ -62,18 +62,19 @@
     font-size: 3.5em;
   }
 }
-@media screen and (max-width: 1024px) {}
-@media screen and (max-width: 600px) {}
 @media screen and (max-width: 425px) {
   .contact img {
-    width: 10rem;
+    width: 8rem;
   }
   .contact__wrap > div:nth-of-type(2) {
-    width: 10rem;
+    width: 8rem;
     padding-left: 1rem;
     margin-left: 1rem;
   }
   .contact__social {
     font-size: 1.3em;
+  }
+  .contact h2 {
+    font-size: 2em;
   }
 }
