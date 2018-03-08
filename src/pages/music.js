@@ -204,7 +204,7 @@ export default class Music extends Component {
     this.player.seekTo(parseFloat(e.target.value))
   }
   onProgress = (state, isIOS) => {
-    console.log('onProgress', state);
+    console.log('onProgress???', state);
     //iOS fix
     if (isIOS) {
       document.getElementsByTagName('audio')[0].play();
