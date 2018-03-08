@@ -69,7 +69,7 @@ export default class Nav extends Component {
         <div className="navMenu">
           <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)' } : { opacity: '0', transform: 'translateY(100%)' }}><Link activeClassName="active" onClick={() => this.toggleNav(navShowing, menuOverlay)} exact to="/">HOME</Link></div>
           <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)' } : { opacity: '0', transform: 'translateY(100%)' }}><Link activeClassName="active" onClick={() => this.toggleNav(navShowing, menuOverlay)} to="/music">LISTEN</Link></div>
-          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)' } : { opacity: '0', transform: 'translateY(100%)' }}><a activeClassName="active" href="https://www.monypowrspt.shop/">MERCH</a></div>
+          <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)' } : { opacity: '0', transform: 'translateY(100%)' }}><a href="https://www.monypowrspt.shop/">MERCH</a></div>
           <div style={navShowing ? { opacity: '1', transform: 'translateY(0%)' } : { opacity: '0', transform: 'translateY(100%)' }}><Link activeClassName="active" onClick={() => this.toggleNav(navShowing, menuOverlay)} to="/contact">CONTACT</Link></div>
         </div>
         <div className="navBar">
