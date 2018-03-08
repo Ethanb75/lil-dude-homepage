@@ -203,8 +203,8 @@ export default class Music extends Component {
     this.setState({ seeking: false })
     this.player.seekTo(parseFloat(e.target.value))
   }
-  onProgress = state => {
-    console.log('onProgress', state)
+  onProgress = (state, isIOS) => {
+    console.log('onProgress', state);
     // We only want to update time slider if we are not currently seeking
     if (state.playedSeconds > 1.5) {
       this.setState({ onBackShouldRestart: true });
@@ -238,6 +238,7 @@ export default class Music extends Component {
     this.player = player
   }
   componentDidMount() {
+    console.log('componentMounted, isIOS?: ', this.state.isIOS);
     document.getElementsByClassName('navBar')[0].classList.add('navBar--music');
     if (this.state.loadingSong === true) {
       this.setState({ loadingSong: false });
@@ -275,7 +276,9 @@ export default class Music extends Component {
           onError={e => {
             console.log('onError4', e);
           }}
-          onProgress={this.onProgress}
+          onProgress={() => {
+            this.onProgress(this.state, isIOS)
+          }}
           onDuration={this.onDuration}
         />
 
