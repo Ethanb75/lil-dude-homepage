@@ -11,8 +11,6 @@ import mll from '../assets/mll.png';
 import trap from '../assets/trapnanana.png';
 
 
-const isIOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform);
-
 const music = [
   {
     albumName: 'Martin Luther Luciano',
@@ -87,7 +85,7 @@ export default class Music extends Component {
     onBackShouldRestart: false,
     loadingSong: true,
     volumeShowing: false,
-    isIOS
+    isIOS: undefined
   }
   // on load, set url, played to 0, loaded to 0, and currentSong / Album
   load = (songNum, albumNum, playAfter, iOS) => {
@@ -246,6 +244,9 @@ export default class Music extends Component {
     this.player = player
   }
   componentDidMount() {
+    if (!this.state.isIOS) {
+      this.setState({ isIOS: !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform) })
+    }
     document.getElementsByClassName('navBar')[0].classList.add('navBar--music');
     if (this.state.loadingSong === true) {
       this.setState({ loadingSong: false });
