@@ -107,6 +107,7 @@ export default class Music extends Component {
             playStyle: 'album'
           }, () => {
             setTimeout(() => {
+              console.log('timeout...')
               document.getElementsByTagName('audio')[0].play().then(() => {
                 console.log('it works????');
               }).catch(err => {
@@ -141,7 +142,7 @@ export default class Music extends Component {
   //return load based on current song and playStyle
   next = (iOS) => {
     const { currentAlbum, currentSong } = this.state;
-    console.log('next: ', iOS);
+    console.log('is iOS?: ', iOS);
     if (this.state.playStyle = 'album') {
       if (currentSong == music[currentAlbum].songs.length - 1) {
         console.log('calling load....');
