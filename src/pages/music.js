@@ -10,6 +10,9 @@ import luc2 from '../assets/luc2.png';
 import mll from '../assets/mll.png';
 import trap from '../assets/trapnanana.png';
 
+
+const isIOS = !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform);
+
 const music = [
   {
     albumName: 'Martin Luther Luciano',
@@ -84,7 +87,7 @@ export default class Music extends Component {
     onBackShouldRestart: false,
     loadingSong: true,
     volumeShowing: false,
-    isIOS: !!window.navigator.platform && /iPad|iPhone|iPod/.test(window.navigator.platform)
+    isIOS
   }
   // on load, set url, played to 0, loaded to 0, and currentSong / Album
   load = (songNum, albumNum, playAfter, iOS) => {
