@@ -207,6 +207,7 @@ export default class Music extends Component {
     console.log('onProgress???', state);
     //iOS fix
     if (isIOS) {
+      console.log('running play onProgress');
       document.getElementsByTagName('audio')[0].play();
     }
     // We only want to update time slider if we are not currently seeking
