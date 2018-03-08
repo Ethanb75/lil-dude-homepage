@@ -205,6 +205,10 @@ export default class Music extends Component {
   }
   onProgress = (state, isIOS) => {
     console.log('onProgress', state);
+    //iOS fix
+    if (isIOS) {
+      document.getElementsByTagName('audio')[0].play();
+    }
     // We only want to update time slider if we are not currently seeking
     if (state.playedSeconds > 1.5) {
       this.setState({ onBackShouldRestart: true });
@@ -238,7 +242,6 @@ export default class Music extends Component {
     this.player = player
   }
   componentDidMount() {
-    console.log('componentMounted, isIOS?: ', this.state.isIOS);
     document.getElementsByClassName('navBar')[0].classList.add('navBar--music');
     if (this.state.loadingSong === true) {
       this.setState({ loadingSong: false });
