@@ -6,6 +6,7 @@ import '../assets/fontawesome-all.min.js';
 import homicide from '../assets/homicide-boat2.mp4';
 import dude from '../assets/lil-dude.png';
 import poster from '../assets/poster.png';
+import bullet from '../assets/bullet1.svg';
 
 
 
@@ -40,15 +41,19 @@ export default class IndexPage extends Component {
             </h1>
             <div className="links">
               <span>
+                <img src={bullet} />
                 <Link to="/music">Music</Link>
               </span>
               <span>
+                <img src={bullet} />
                 <Link to="/">Merch</Link>
               </span>
               <span>
+                <img src={bullet} />
                 <Link to="/contact">Contact</Link>
               </span>
               <span>
+                <img src={bullet} />
                 <a href="https://www.youtube.com/watch?v=Y4C74LL_PJQ" target="__blank">Video</a>
               </span>
             </div>

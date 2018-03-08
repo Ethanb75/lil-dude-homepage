@@ -55,6 +55,7 @@ html {
   position: absolute;
   right: 0;
   transform: rotate(-90deg);
+  top: 50vh;
 }
 .content > span a {
   color: rgba(255, 255, 255, .7);
@@ -105,8 +106,7 @@ html {
   position: relative;
 }
 .links img {
-  width: 2rem;
-  margin-right: .5rem;
+  display: none;
 }
 .links > span:last-of-type {
   border: none;
@@ -201,6 +201,12 @@ html {
     border: none;
     font-size: 3em;
     padding: .8rem 0rem;
+  }
+  .links img {
+    width: 1rem;
+    display: inline;
+    margin-right: 1rem;
+    margin-bottom: -.15rem;
   }
   .social {
     left: 0;
