@@ -207,7 +207,7 @@ export default class Music extends Component {
   onProgress = (state, isIOS) => {
     console.log('onProgress???', state);
     //iOS fix
-    if (isIOS) {
+    if (isIOS && state.playing === false) {
       console.log('running play onProgress');
       document.getElementsByTagName('audio')[0].play();
     }
