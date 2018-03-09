@@ -207,10 +207,10 @@ export default class Music extends Component {
   onProgress = (state, isIOS) => {
     console.log('onProgress???', state);
     //iOS fix
-    if (isIOS && state.playing === false) {
-      console.log('running play onProgress');
-      document.getElementsByTagName('audio')[0].play();
-    }
+    // if (isIOS && state.playing === true) {
+    //   console.log('running play onProgress');
+    //   document.getElementsByTagName('audio')[0].play();
+    // }
     // We only want to update time slider if we are not currently seeking
     if (state.playedSeconds > 1.5) {
       this.setState({ onBackShouldRestart: true });
