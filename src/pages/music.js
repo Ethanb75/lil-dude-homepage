@@ -204,7 +204,7 @@ export default class Music extends Component {
     this.setState({ seeking: false })
     this.player.seekTo(parseFloat(e.target.value))
   }
-  onProgress = (state, isIOS) => {
+  onProgress = state => {
     console.log('onProgress???', state);
     //iOS fix
     // if (isIOS && state.playing === true) {
@@ -284,9 +284,7 @@ export default class Music extends Component {
           onError={e => {
             console.log('onError4', e);
           }}
-          onProgress={() => {
-            this.onProgress(this.state, isIOS)
-          }}
+          onProgress={this.onProgress}
           onDuration={this.onDuration}
         />
 
